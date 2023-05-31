@@ -25,6 +25,18 @@ services:
     networks:
       - billabear
 
+  worker:
+    image: billabear/backend:0.1
+    command: ["bin/console messenger:consume scheduler_main"]
+    depends_on:
+      - database
+    environment:
+      - APP_ENV=${APP_ENV}
+      - APP_SECRET=${APP_SECRET}
+      - DATABASE_URL=pgsql://${PSQGL_DATABASE_USER}:${PSQGL_DATABASE_PASSWORD}@database:5432/${PSQGL_DATABASE_NAME}
+    networks:
+      - billabear
+
   nginx:
     image: billabear/frontend:0.1
     depends_on:
