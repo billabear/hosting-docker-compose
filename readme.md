@@ -17,4 +17,6 @@ cd hosting-docker-compose
 docker compose up -d
 ```
 
+Then edit the `.env` file to add your stripe api keys.
+
 Then go to http://localhost and follow the install instructions.
