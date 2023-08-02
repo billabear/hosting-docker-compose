@@ -22,6 +22,7 @@ services:
       - APP_ENV=${APP_ENV}
       - APP_SECRET=${APP_SECRET}
       - DATABASE_URL=pgsql://${PSQGL_DATABASE_USER}:${PSQGL_DATABASE_PASSWORD}@database:5432/${PSQGL_DATABASE_NAME}
+      - STRIPE_PRIVATE_API_KEY=${STRIPE_PRIVATE_API_KEY}
     networks:
       - billabear
 
@@ -33,6 +34,7 @@ services:
     environment:
       - APP_ENV=${APP_ENV}
       - APP_SECRET=${APP_SECRET}
+      - STRIPE_PRIVATE_API_KEY=${STRIPE_PRIVATE_API_KEY}
       - DATABASE_URL=pgsql://${PSQGL_DATABASE_USER}:${PSQGL_DATABASE_PASSWORD}@database:5432/${PSQGL_DATABASE_NAME}
     networks:
       - billabear
