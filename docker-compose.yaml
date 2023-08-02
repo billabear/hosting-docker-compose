@@ -7,15 +7,13 @@ services:
       - POSTGRES_DB=${PSQGL_DATABASE_NAME}
       - POSTGRES_USER=${PSQGL_DATABASE_USER}
       - POSTGRES_PASSWORD=${PSQGL_DATABASE_PASSWORD}
-    ports:
-      - "5432:5432"
     volumes:
       - ./docker/database/data:/var/lib/postgresql/data
     networks:
       - billabear
 
   php-fpm:
-    image: billabear/backend:0.1
+    image: billabear/backend:latest
     depends_on:
       - database
     environment:
@@ -28,7 +26,7 @@ services:
       - billabear
 
   worker:
-    image: billabear/backend:0.1
+    image: billabear/backend:latest
     command: ["bin/console messenger:consume scheduler_main"]
     depends_on:
       - database
@@ -42,7 +40,7 @@ services:
       - billabear
 
   nginx:
-    image: billabear/frontend:0.1
+    image: billabear/frontend:latest
     depends_on:
       - php-fpm
     ports:
