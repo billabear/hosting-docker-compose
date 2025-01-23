@@ -27,7 +27,7 @@ services:
 
   worker:
     image: billabear/backend:latest
-    command: ["bin/console messenger:consume scheduler_main"]
+    command: ["bin/console messenger:consume scheduler_main main"]
     depends_on:
       - database
     environment:
