@@ -7,8 +7,7 @@ services:
       - "6379:6379"
     
   database:
-    image: timescale/timescaledb-ha:pg16
-    user: "postgres:postgres" 
+    image: timescale/timescaledb-ha:pg17
     environment:
       - POSTGRES_DB=${PSQGL_DATABASE_NAME}
       - POSTGRES_USER=${PSQGL_DATABASE_USER}
