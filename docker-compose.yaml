@@ -1,14 +1,20 @@
-version: '3.2'
-
 services:
+  redis:
+    image: redis:5-alpine
+    networks:
+      - billabear
+    ports:
+      - "6379:6379"
+    
   database:
-    image: postgres:13.3-alpine3.14
+    image: timescale/timescaledb-ha:pg16
+    user: "postgres:postgres" 
     environment:
       - POSTGRES_DB=${PSQGL_DATABASE_NAME}
       - POSTGRES_USER=${PSQGL_DATABASE_USER}
       - POSTGRES_PASSWORD=${PSQGL_DATABASE_PASSWORD}
     volumes:
-      - ./docker/database/data:/var/lib/postgresql/data
+      - ./docker/database/data:/home/postgres/pgdata/data 
     networks:
       - billabear
 
